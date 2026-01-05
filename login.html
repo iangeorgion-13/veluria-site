@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login – Veluria</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- Language Switch -->
+<div style="position:fixed; top:20px; right:20px; z-index:10;">
+  <button onclick="setLang('en')">EN</button>
+  <button onclick="setLang('es')">ES</button>
+</div>
+
+<div class="auth-center">
+  <div class="auth-box">
+    <h1>VELURIA</h1>
+    <p data-lang="login">Login</p>
+
+    <input type="email" placeholder="Email"><br><br>
+    <input type="password" placeholder="Password"><br><br>
+
+    <button data-lang="login">Login</button><br><br>
+
+    <a href="register.html" data-lang="register">Register</a>
+  </div>
+</div>
+
+<script src="lang.js"></script>
+</body>
+</html>

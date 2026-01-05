@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Register – Veluria</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- Language Switch -->
+<div style="position:fixed; top:20px; right:20px; z-index:10;">
+<button onclick="setLang('en')">EN</button>
+<button onclick="setLang('es')">ES</button>
+</div>
+
+<div class="auth-center">
+<div class="auth-box">
+<h1>VELURIA</h1>
+<p data-lang="register">Register</p>
+
+<input type="email" id="email" placeholder="Email"><br><br>
+<input type="password" id="password" placeholder="Password"><br><br>
+
+<button onclick="registerUser()" data-lang="register">Register</button><br><br>
+
+<a href="login.html" data-lang="login">Login</a>
+</div>
+</div>
+
+<script src="lang.js"></script>
+
+<script>
+async function registerUser() {
+alert("Botón Register presionado");
+
+const email = document.getElementById("email").value;
+const password = document.getElementById("password").value;
+
+alert("Email ingresado: " + email);
+
+try {
+const res = await fetch("https://veluria-backend.onrender.com/register", {
+method: "POST",
+headers: { "Content-Type": "application/json" },
+body: JSON.stringify({ email, password })
+});
+
+const data = await res.json();
+alert("Respuesta del servidor: " + JSON.stringify(data));
+
+if (data.success) {
+alert("Registered successfully");
+window.location.href = "login.html";
+} else {
+alert("Registration failed");
+}
+
+} catch (err) {
+alert("ERROR: " + err);
+}
+}
+</script>
+
+</body>
+</html>

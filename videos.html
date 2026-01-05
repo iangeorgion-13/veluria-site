@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Veluria – Streaming</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 40px;
+}
+
+.video-card {
+  background: #050505;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.9);
+}
+
+.video-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.video-info {
+  padding: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="dashboard">
+  <div class="sidebar">
+    <h2>VELURIA</h2>
+    <a href="videos.html">Videos</a>
+    <a href="creators.html">Creators</a>
+    <a href="index.html">Logout</a>
+  </div>
+
+  <div class="panel">
+    <h1>Featured Videos</h1>
+
+    <div class="video-grid">
+
+      <div class="video-card">
+        <img src="https://picsum.photos/400/300?1">
+        <div class="video-info">
+          <h3>Behind the scenes</h3>
+          <p>by Sofia Lux</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <img src="https://picsum.photos/400/300?2">
+        <div class="video-info">
+          <h3>Private Session</h3>
+          <p>by Valentina</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <img src="https://picsum.photos/400/300?3">
+        <div class="video-info">
+          <h3>Exclusive Night</h3>
+          <p>by Luna Rose</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

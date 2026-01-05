@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Creator – Veluria</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- Language Switch -->
+<div style="position:fixed; top:20px; right:20px; z-index:10;">
+  <button onclick="setLang('en')">EN</button>
+  <button onclick="setLang('es')">ES</button>
+</div>
+
+<div class="dashboard">
+  <div class="sidebar">
+    <h2>VELURIA</h2>
+    <a data-lang="dashboard">Dashboard</a>
+    <a data-lang="content">Content</a>
+    <a data-lang="earnings">Earnings</a>
+    <a href="index.html" data-lang="logout">Logout</a>
+  </div>
+
+  <div class="panel">
+    <h1 data-lang="dashboard">Dashboard</h1>
+
+    <div class="cards">
+      <div class="card">
+        <h3 data-lang="subs">Subscribers</h3>
+        <p>124</p>
+      </div>
+      <div class="card">
+        <h3 data-lang="revenue">Revenue</h3>
+        <p>$8,450</p>
+      </div>
+      <div class="card">
+        <h3 data-lang="views">Views</h3>
+        <p>32,800</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="lang.js"></script>
+</body>
+</html>

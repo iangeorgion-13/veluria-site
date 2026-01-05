@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Creators – Veluria</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.creator-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.creator-card {
+  background: linear-gradient(to bottom, #111, #050505);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.9);
+}
+
+.creator-card img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+.creator-info {
+  padding: 20px;
+}
+
+.creator-info h3 {
+  margin: 0;
+}
+
+.creator-info p {
+  opacity: 0.6;
+  font-size: 14px;
+}
+
+.creator-info button {
+  margin-top: 15px;
+  width: 100%;
+}
+</style>
+</head>
+
+<body>
+
+<div class="dashboard">
+  <div class="sidebar">
+    <h2>VELURIA</h2>
+    <a href="creators.html">Creators</a>
+    <a href="creator-dashboard.html">My Panel</a>
+    <a href="index.html">Logout</a>
+  </div>
+
+  <div class="panel">
+    <h1>Featured Creators</h1>
+
+    <div class="creator-grid">
+      <div class="creator-card">
+        <img src="https://picsum.photos/400/600?1">
+        <div class="creator-info">
+          <h3>Luna Rose</h3>
+          <p>$9.99 / month</p>
+          <button>Subscribe</button>
+        </div>
+      </div>
+
+      <div class="creator-card">
+        <img src="https://picsum.photos/400/600?2">
+        <div class="creator-info">
+          <h3>Valentina</h3>
+          <p>$12.99 / month</p>
+          <button>Subscribe</button>
+        </div>
+      </div>
+
+      <div class="creator-card">
+        <img src="https://picsum.photos/400/600?3">
+        <div class="creator-info">
+          <h3>Sofia Lux</h3>
+          <p>$15.99 / month</p>
+          <button>Subscribe</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin – Veluria</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- Language Switch -->
+<div style="position:fixed; top:20px; right:20px; z-index:10;">
+  <button onclick="setLang('en')">EN</button>
+  <button onclick="setLang('es')">ES</button>
+</div>
+
+<div class="dashboard">
+  <div class="sidebar">
+    <h2>VELURIA</h2>
+    <a data-lang="admin">Admin</a>
+    <a data-lang="users">Users</a>
+    <a data-lang="reports">Reports</a>
+    <a href="index.html" data-lang="logout">Logout</a>
+  </div>
+
+  <div class="panel">
+    <h1 data-lang="admin">Admin Panel</h1>
+
+    <table class="admin-table">
+      <tr>
+        <th data-lang="user">User</th>
+        <th data-lang="status">Status</th>
+        <th data-lang="action">Action</th>
+      </tr>
+      <tr>
+        <td>creator01</td>
+        <td class="status active">Active</td>
+        <td><button class="btn flag">Flag</button></td>
+      </tr>
+      <tr>
+        <td>creator02</td>
+        <td class="status pending">Pending</td>
+        <td><button class="btn approve">Approve</button></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<script src="lang.js"></script>
+</body>
+</html>
