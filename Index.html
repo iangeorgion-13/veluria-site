@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -6,39 +6,32 @@
 <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="age-gate">
 
-<!-- Language Switch -->
-<div style="position:fixed; top:20px; right:20px; z-index:10;">
-  <button onclick="setLang('en')">EN</button>
-  <button onclick="setLang('es')">ES</button>
+<div class="age-container">
+<h1>VELURIA</h1>
+<p>You must be 18+ to enter</p>
+
+<label>
+<input type="checkbox" id="ageCheck">
+I confirm I am over 18 years old
+</label>
+
+<br><br>
+
+<button class="enter-btn" onclick="enterVeluria()">Enter Veluria</button>
 </div>
-
-<div class="auth-center">
-  <div class="auth-box">
-    <h1>VELURIA</h1>
-    <p data-lang="age">I am 18+</p>
-
-    <input type="checkbox" id="ageCheck"> 
-    <label for="ageCheck" data-lang="age">I am 18+</label>
-    <br><br>
-
-    <button onclick="enterVeluria()" data-lang="enter">Enter Veluria</button>
-  </div>
-</div>
-
-<script src="lang.js"></script>
 
 <script>
 function enterVeluria() {
-  if (!document.getElementById("ageCheck").checked) {
-    alert("You must be 18+");
-    return;
-  }
-  window.location.href = "Landing.html";
+const check = document.getElementById("ageCheck");
+if (!check || !check.checked) {
+alert("You must confirm you are 18+");
+return;
+}
+window.location.href = "Landing.html";
 }
 </script>
 
 </body>
 </html>
-
