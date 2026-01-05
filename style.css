@@ -299,4 +299,11 @@ button:hover {
     width: 90%;
     padding: 40px;
   }
+.center-screen {
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+text-align: center;
+}
 }
