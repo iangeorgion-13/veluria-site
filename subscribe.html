@@ -1,21 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Veluria | Subscribe</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Subscribe – Veluria</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body{
+background:#000;
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+height:100vh;
+}
+.box{
+text-align:center;
+}
+.box h1{
+font-size:48px;
+}
+.box button{
+background:#fff;
+color:#000;
+border:none;
+padding:20px 50px;
+font-size:18px;
+border-radius:50px;
+cursor:pointer;
+}
+</style>
 </head>
+
 <body>
 
-<section class="center">
-  <h1>VELURIA</h1>
-  <p>Where desire becomes art.</p>
+<div class="box">
+<h1>VELURIA PREMIUM</h1>
+<p>$10/month – First month free</p>
+<p>Unlock all creators, videos and premium content</p>
+<button onclick="goPay()">Start Free Trial</button>
+</div>
 
-  <h2>Monthly Membership</h2>
-  <p>Unlimited access to premium cinematic content.</p>
-
-  <button>Subscribe Now</button>
-</section>
+<script>
+function goPay(){
+window.location.href = "https://buy.stripe.com/test_dRm14n7Ko6rS9ZY8O62B200";
+}
+</script>
 
 </body>
 </html>
