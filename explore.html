@@ -5,142 +5,37 @@
 <title>Explore – Veluria</title>
 <link rel="stylesheet" href="style.css">
 <style>
-body {
-background:#000;
-color:#fff;
-font-family:Arial, Helvetica, sans-serif;
-}
-
-.explore-header {
-text-align:center;
-padding:40px;
-}
-
-.explore-header h1 {
-font-size:48px;
-letter-spacing:4px;
-}
-
-.explore-grid {
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-gap:20px;
-padding:40px;
-}
-
-.card {
-background:#111;
-border-radius:12px;
-overflow:hidden;
-position:relative;
-cursor:pointer;
-transition:.3s;
-}
-
-.card:hover {
-transform:scale(1.05);
-box-shadow:0 0 40px rgba(255,255,255,.1);
-}
-
-.card img {
-width:100%;
-height:300px;
-object-fit:cover;
-}
-
-.card .info {
-padding:15px;
-}
-
-.card .name {
-font-size:18px;
-}
-
-.card .tag {
-font-size:12px;
-opacity:.6;
-}
-
-.lock {
-position:absolute;
-inset:0;
-background:rgba(0,0,0,.8);
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:22px;
-opacity:0;
-transition:.3s;
-pointer-events: none;
-}
-
-.card:hover .lock {
-opacity:1;
-}
-
-.cta {
-text-align:center;
-padding:60px;
-}
-
-.cta button {
-background:#fff;
-color:#000;
-border:none;
-padding:20px 50px;
-font-size:18px;
-border-radius:50px;
-cursor:pointer;
-}
+body {background:#000;color:#fff;font-family:Arial;}
+.explore-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;padding:40px;}
+.card{background:#111;border-radius:12px;overflow:hidden;}
+.card img{width:100%;height:300px;object-fit:cover;cursor:pointer;}
+.card .info{padding:15px;cursor:pointer;}
 </style>
 </head>
 
 <body>
 
-<div class="explore-header">
-<h1>VELURIA</h1>
-<p>Discover premium creators</p>
-</div>
+<h1 style="text-align:center">VELURIA</h1>
 
 <div class="explore-grid" id="grid"></div>
 
-<div class="cta">
-<h2>Unlock all creators</h2>
-<p>Join Veluria and access exclusive premium content</p>
-<button onclick="goSubscribe()">Subscribe Now</button>
-</div>
-
 <script>
-const creators = [
-"Ava Noir","Luna Vega","Mia Rose","Scarlet Fox",
-"Valentina","Isabella Ray","Nina Lux","Amber Silk",
-"Sofia Blaze","Ivy Storm","Aria Moon","Kylie V"
-];
-
-const grid = document.getElementById("grid");
+const creators=["Ava","Luna","Mia","Scarlet","Valentina","Isabella","Nina","Amber","Sofia","Ivy","Aria","Kylie"];
+const grid=document.getElementById("grid");
 
 creators.forEach(name=>{
-const div = document.createElement("div");
+const div=document.createElement("div");
 div.className="card";
-div.onclick = unlock;
-div.innerHTML = `
-<img src="https://picsum.photos/400/600?random=${Math.random()}">
-<div class="info">
-<div class="name">${name}</div>
-<div class="tag">Premium Creator</div>
-</div>
-<div class="lock">🔒 Unlock</div>
+div.innerHTML=`
+<img src="https://picsum.photos/400/600?random=${Math.random()}" onclick="unlock()">
+<div class="info" onclick="unlock()">${name}</div>
 `;
 grid.appendChild(div);
 });
 
 function unlock(){
-const email = localStorage.getItem("veluria_user");
-
-if(!email){
-window.location.href="Register.html";
-return;
-}
+const email=localStorage.getItem("veluria_user");
+if(!email){window.location.href="Register.html";return;}
 
 fetch("https://veluria-backend.onrender.com/check",{
 method:"POST",
@@ -149,16 +44,9 @@ body:JSON.stringify({email})
 })
 .then(r=>r.json())
 .then(d=>{
-if(d.premium){
-window.location.href="videos.html";
-} else {
-window.location.href="Subscribe.html";
-}
+if(d.premium){window.location.href="videos.html";}
+else{window.location.href="Subscribe.html";}
 });
-}
-
-function goSubscribe(){
-window.location.href = "Subscribe.html";
 }
 </script>
 
