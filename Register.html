@@ -4,43 +4,71 @@
 <meta charset="UTF-8">
 <title>Register – Veluria</title>
 <link rel="stylesheet" href="style.css">
+<style>
+body{
+background:#000;
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+height:100vh;
+font-family:Arial, Helvetica, sans-serif;
+}
+.box{
+background:#111;
+padding:40px;
+border-radius:12px;
+width:350px;
+text-align:center;
+}
+input{
+width:100%;
+padding:12px;
+margin:10px 0;
+background:#000;
+border:1px solid #333;
+color:#fff;
+}
+button{
+width:100%;
+padding:12px;
+margin-top:20px;
+background:#fff;
+color:#000;
+border:none;
+cursor:pointer;
+}
+</style>
 </head>
 
 <body>
 
-<div class="auth-center">
-<div class="auth-box">
-<h1>VELURIA</h1>
-<p>Create account</p>
-
-<input type="email" id="email" placeholder="Email"><br><br>
-<input type="password" id="password" placeholder="Password"><br><br>
-
-<button onclick="registerUser()">Register</button><br><br>
-
-<a href="Login.html">Login</a>
-</div>
+<div class="box">
+<h2>Create your Veluria account</h2>
+<input id="email" type="email" placeholder="Email">
+<input id="password" type="password" placeholder="Password">
+<button onclick="register()">Create Account</button>
+<p id="msg"></p>
 </div>
 
 <script>
-async function registerUser() {
+function register(){
 const email = document.getElementById("email").value;
 const password = document.getElementById("password").value;
 
-const res = await fetch("https://veluria-backend.onrender.com/register", {
-method: "POST",
-headers: { "Content-Type": "application/json" },
-body: JSON.stringify({ email, password })
-});
-
-const data = await res.json();
-
-if (data.success) {
-alert("Account created");
+fetch("https://veluria-backend.onrender.com/register", {
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body: JSON.stringify({email,password})
+})
+.then(r=>r.json())
+.then(data=>{
+if(data.success){
 window.location.href = "Login.html";
 } else {
-alert("Registration failed");
+document.getElementById("msg").innerText = data.error || "Registration failed";
 }
+});
 }
 </script>
 
