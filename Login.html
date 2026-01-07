@@ -4,40 +4,6 @@
 <meta charset="UTF-8">
 <title>Login – Veluria</title>
 <link rel="stylesheet" href="style.css">
-<style>
-body{
-background:#000;
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
-height:100vh;
-}
-.box{
-background:#111;
-padding:40px;
-border-radius:12px;
-width:350px;
-text-align:center;
-}
-input{
-width:100%;
-padding:12px;
-margin:10px 0;
-background:#000;
-border:1px solid #333;
-color:#fff;
-}
-button{
-width:100%;
-padding:12px;
-margin-top:20px;
-background:#fff;
-color:#000;
-border:none;
-cursor:pointer;
-}
-</style>
 </head>
 
 <body>
@@ -51,6 +17,12 @@ cursor:pointer;
 </div>
 
 <script>
+const savedEmail = localStorage.getItem("veluria_user");
+
+if(savedEmail){
+document.getElementById("email").value = savedEmail;
+}
+
 function login(){
 const email = document.getElementById("email").value;
 const password = document.getElementById("password").value;
@@ -65,7 +37,7 @@ body: JSON.stringify({email,password})
 if(data.success){
 localStorage.setItem("veluria_user", email);
 localStorage.setItem("veluria_premium", data.premium);
-window.location.href = "index.html";
+window.location.href = "explore.html";
 } else {
 document.getElementById("msg").innerText = "Invalid login";
 }
