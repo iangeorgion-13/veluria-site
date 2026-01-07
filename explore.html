@@ -101,7 +101,13 @@ cursor:pointer;
 <p>Discover premium creators</p>
 </div>
 
-<div class="explore-grid">
+<div class="explore-grid" id="grid"></div>
+
+<div class="cta">
+<h2>Unlock all creators</h2>
+<p>Join Veluria and access exclusive premium content</p>
+<button onclick="goSubscribe()">Subscribe Now</button>
+</div>
 
 <script>
 const creators = [
@@ -110,27 +116,40 @@ const creators = [
 "Sofia Blaze","Ivy Storm","Aria Moon","Kylie V"
 ];
 
+const grid = document.getElementById("grid");
+
 creators.forEach(name=>{
-document.write(`
-<div class="card" onclick="goSubscribe()">
+const div = document.createElement("div");
+div.className="card";
+div.onclick = unlock;
+div.innerHTML = `
 <img src="https://picsum.photos/400/600?random=${Math.random()}">
 <div class="info">
 <div class="name">${name}</div>
 <div class="tag">Premium Creator</div>
 </div>
-<div class="lock">🔒 Subscribe to unlock</div>
-</div>
-`);
+<div class="lock">🔒 Unlock</div>
+`;
+grid.appendChild(div);
 });
+
+function unlock(){
+const user = localStorage.getItem("veluria_user");
+const premium = localStorage.getItem("veluria_premium");
+
+if(!user){
+window.location.href = "Register.html";
+} else if(premium !== "true"){
+window.location.href = "Subscribe.html";
+} else {
+window.location.href = "videos.html";
+}
+}
+
+function goSubscribe(){
+window.location.href = "Subscribe.html";
+}
 </script>
-
-</div>
-
-<div class="cta">
-<h2>Unlock all creators</h2>
-<p>Join Veluria and access exclusive premium content</p>
-<button onclick="window.location.href='Subscribe.html'">Subscribe Now</button>
-</div>
 
 </body>
 </html>
