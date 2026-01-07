@@ -134,16 +134,26 @@ grid.appendChild(div);
 });
 
 function unlock(){
-const user = localStorage.getItem("veluria_user");
-const premium = localStorage.getItem("veluria_premium");
+const email = localStorage.getItem("veluria_user");
 
-if(!user){
-window.location.href = "Register.html";
-} else if(premium !== "true"){
-window.location.href = "Subscribe.html";
-} else {
-window.location.href = "videos.html";
+if(!email){
+window.location.href="Register.html";
+return;
 }
+
+fetch("https://veluria-backend.onrender.com/check",{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({email})
+})
+.then(r=>r.json())
+.then(d=>{
+if(d.premium){
+window.location.href="videos.html";
+} else {
+window.location.href="Subscribe.html";
+}
+});
 }
 
 function goSubscribe(){
