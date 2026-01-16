@@ -1,26 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Explore Test</title>
+<title>Explore – Veluria</title>
 </head>
 
-<body style="background:black;color:white;text-align:center">
+<body style="background:black;color:white;font-family:Arial">
 
-<h1>VELURIA TEST</h1>
+<h1 style="text-align:center">VELURIA</h1>
 
-<div onclick="testClick()"
-style="margin:100px auto;
-width:200px;
-padding:40px;
-background:#333;
-cursor:pointer;">
-CLICK ACÁ
+<div style="display:grid;grid-template-columns:repeat(auto-fill,200px);gap:30px;justify-content:center;padding:60px">
+
+<div onclick="unlock()" style="cursor:pointer">
+<img src="https://picsum.photos/200/300?1">
+<p>Creator 1 🔒</p>
+</div>
+
+<div onclick="unlock()" style="cursor:pointer">
+<img src="https://picsum.photos/200/300?2">
+<p>Creator 2 🔒</p>
+</div>
+
+<div onclick="unlock()" style="cursor:pointer">
+<img src="https://picsum.photos/200/300?3">
+<p>Creator 3 🔒</p>
+</div>
+
 </div>
 
 <script>
-function testClick(){
-alert("EL CLICK FUNCIONA");
+function unlock(){
+const email = localStorage.getItem("veluria_user");
+
+console.log("CLICK");
+console.log("EMAIL:", email);
+
+if(!email){
+window.location.href = "Register.html";
+return;
+}
+
+fetch("https://veluria-backend.onrender.com/check", {
+method: "POST",
+headers: { "Content-Type": "application/json" },
+body: JSON.stringify({ email })
+})
+.then(res => res.json())
+.then(data => {
+console.log("CHECK RESPONSE:", data);
+
+if(data.premium === true){
+window.location.href = "videos.html";
+} else {
+window.location.href = "Subscribe.html";
+}
+})
+.catch(err=>{
+console.error("FETCH ERROR:", err);
+alert("Error de conexión con el servidor");
+});
 }
 </script>
 
